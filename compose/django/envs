@@ -1,0 +1,15 @@
+# Django environment vars.
+# ------------------------------------------------------------
+DEBUG=1
+
+SECRET_KEY=n5l%thnyr%!o+iy^16&$4m^ct6)g3ck1tex%#2+@vga4xr*hv0
+
+ALLOWED_HOSTS=localhost
+
+# Database
+# ------------------------------------------------------------
+NAME_DB=postgres
+USER_DB=postgres
+PASSWORD_DB=postgres
+HOST_DB=db
+PORT_DB=5432 

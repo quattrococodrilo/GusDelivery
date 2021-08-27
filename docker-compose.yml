@@ -6,11 +6,11 @@ services:
     volumes:
       - ./data/db:/var/lib/postgresql/data
     env_file:
-      - ./compose/postgres/.env
+      - ./compose/postgres/envs
   web:
     build: ./compose/django
     env_file:
-      - ./compose/django/.env
+      - ./compose/django/envs
     command: python manage.py runserver 0.0.0.0:8000
     volumes:
       - ./GusDelivery:/code
