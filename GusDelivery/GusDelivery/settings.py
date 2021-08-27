@@ -15,7 +15,7 @@ from pathlib import Path
 
 env = environ.Env(
     DEBUG=(bool, False),
-    SECRET_KEY=(list),
+    SECRET_KEY=(list, ['localhost']),
 )
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
@@ -31,7 +31,7 @@ SECRET_KEY = env('SECRET_KEY')
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = env('DEBUG')
 
-ALLOWED_HOSTS = env('ALLOWED_HOSTS')
+ALLOWED_HOSTS = env.list('ALLOWED_HOSTS')
 
 # Application definition
 
@@ -45,10 +45,12 @@ DJANGO_APPS = [
 ]
 
 THIRD_PARTY_APPS = [
+    'django_extensions',
     'rest_framework',
 ]
 
 LOCAL_APPS = [
+    'users.apps.UsersConfig',
     'postal_codes.apps.PostalCodesConfig',
 ]
 
@@ -95,7 +97,7 @@ DATABASES = {
         'USER': env('USER_DB'),
         'PASSWORD': env('PASSWORD_DB'),
         'HOST': env('HOST_DB'),
-        'PORT': 5432, 
+        'PORT': env('PORT_DB'), 
     }
 }
 
@@ -119,10 +121,14 @@ AUTH_PASSWORD_VALIDATORS = [
 ]
 
 
+# Custom User Models
+
+AUTH_USER_MODEL = 'users.User'
+
 # Internationalization
 # https://docs.djangoproject.com/en/3.2/topics/i18n/
 
-LANGUAGE_CODE = 'en-us'
+LANGUAGE_CODE = 'es'
 
 TIME_ZONE = 'America/Mexico_City'
 
@@ -142,3 +148,4 @@ STATIC_URL = '/static/'
 # https://docs.djangoproject.com/en/3.2/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+
