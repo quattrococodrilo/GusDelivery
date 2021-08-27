@@ -44,11 +44,13 @@ class Estado(Base):
     d_estado = models.CharField(
         'nombre',
         max_length=255,
+        unique=True,
     )
 
     c_estado = models.CharField(
         'clave',
         max_length=255,
+        unique=True,
     )
 
     def __str__(self):
